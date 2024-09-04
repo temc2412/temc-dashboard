@@ -18,12 +18,12 @@ export default async function Page({
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
 
-  console.log("Query:", query);
-  console.log("Current Page:", currentPage);
-  console.log("SearchParams:", searchParams);
+  //console.log("Query:", query);
+  //console.log("Current Page:", currentPage);
+  //console.log("SearchParams:", searchParams);
 
   const totalPages = await fetchInvoicesPages(query);
-  console.log("TotalPage:", totalPages);
+  //console.log("TotalPage:", totalPages);
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
