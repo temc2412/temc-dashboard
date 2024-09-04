@@ -112,6 +112,7 @@ export async function fetchFilteredInvoices(
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
 
+    console.log("invoices:", invoices);
     return invoices.rows;
   } catch (error) {
     console.error("Database Error:", error);
@@ -128,9 +129,13 @@ export async function fetchInvoicesPages(query: string) {
       customers.name ILIKE ${`%${query}%`} OR
       customers.email ILIKE ${`%${query}%`} OR
       invoices.amount::text ILIKE ${`%${query}%`} OR
-      invoices.date::text ILIKE ${`%${query}%`} OR
-      invoices.status ILIKE ${`%${query}%`}
+      invoices.date::text ILIKE ${`%${query}%`}
   `;
+
+    const status = await sql`SELECT DISTINCT status
+FROM invoices;`;
+
+    console.log("Status:", status);
 
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
