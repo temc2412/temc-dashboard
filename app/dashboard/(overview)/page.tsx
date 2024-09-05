@@ -10,6 +10,7 @@ import {
   LatestInvoicesSkeleton,
   CardsSkeleton,
 } from "@/app/ui/skeletons";
+import { revalidatePath } from "next/cache";
 
 export default async function Page() {
   const {
@@ -18,6 +19,7 @@ export default async function Page() {
     totalPaidInvoices,
     totalPendingInvoices,
   } = await fetchCardData();
+  revalidatePath("/dashboard/invoices");
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
