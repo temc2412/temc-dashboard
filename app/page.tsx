@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import AcmeLogo from "./ui/acme-logo";
 
 export default function Home() {
@@ -24,7 +23,6 @@ export default function Home() {
             className="flex items-center gap-5 self-start rounded-lg bg-khaki px-6 py-3 text-sm font-medium text-davysgray transition-colors hover:bg-snow md:text-base"
           >
             <span>Iniciar Sesión</span>{" "}
-            <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
