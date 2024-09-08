@@ -43,9 +43,9 @@ export async function authenticate(
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return "Invalid credentials.";
+          return "Credenciales inválidas.";
         default:
-          return "Something went wrong.";
+          return "Algo salió mal.";
       }
     }
     throw error;
@@ -64,7 +64,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Invoice.",
+      message: "Campos faltantes. Error al crear la factura.",
     };
   }
 
@@ -82,7 +82,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   } catch (error) {
     // If a database error occurs, return a more specific error.
     return {
-      message: "Database Error: Failed to Create Invoice.",
+      message: "Error de base de datos: No se pudo crear la factura.",
     };
   }
 
@@ -105,7 +105,7 @@ export async function updateInvoice(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Update Invoice.",
+      message: "Campos faltantes. Error al actualizar la factura.",
     };
   }
 
@@ -119,7 +119,9 @@ export async function updateInvoice(
       WHERE id = ${id}
     `;
   } catch (error) {
-    return { message: "Database Error: Failed to Update Invoice." };
+    return {
+      message: "Error de base de datos: No se pudo actualizar la factura.",
+    };
   }
 
   revalidatePath("/dashboard/invoices");
@@ -130,8 +132,10 @@ export async function deleteInvoice(id: string) {
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
     revalidatePath("/dashboard/invoices");
-    return { message: "Deleted Invoice." };
+    return { message: "Factura eliminada." };
   } catch (error) {
-    return { message: "Database Error: Failed to Delete Invoice." };
+    return {
+      message: "Error de base de datos: No se pudo eliminar la factura.",
+    };
   }
 }
