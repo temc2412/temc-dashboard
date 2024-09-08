@@ -5,8 +5,13 @@ import "./ui/globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TEMC Dashboard",
-  description: "Proyecto creado para el portafolio",
+  title: {
+    template: "%s | TEMC Dashboard",
+    default: "TEMC Dashboard",
+  },
+  description:
+    "Dashboard construido con APP Router y con la ayuda de NextJS Learn",
+  metadataBase: new URL("https://temc-dashboard.vercel.app"),
 };
 
 export default function RootLayout({
