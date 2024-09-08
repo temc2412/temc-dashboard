@@ -31,7 +31,6 @@ export const { auth, signIn, signOut } = NextAuth({
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (passwordsMatch) return user;
         }
-        console.log("Credencial Invalida");
         return null;
       },
     }),
