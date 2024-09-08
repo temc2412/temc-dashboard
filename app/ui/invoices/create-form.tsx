@@ -131,15 +131,18 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               </p>
             ))}
         </div>
-        <div id="status-error" aria-live="polite" aria-atomic="true">
-          {Object.keys(Error).length > 0 &&
-            Object.values(Error)
-              .flat()
-              .map((error: string, index: number) => (
-                <p className="mt-2 text-sm text-red-500" key={index}>
-                  {error}
-                </p>
-              ))}
+        <div id="global-error" aria-live="polite" aria-atomic="true">
+          {state.message && (
+            <p
+              className={`mt-2 text-sm ${
+                state.message.includes("Failed")
+                  ? "text-red-500"
+                  : "text-green-500"
+              }`}
+            >
+              {state.message}
+            </p>
+          )}
         </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
