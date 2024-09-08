@@ -1,4 +1,9 @@
 import SideNav from "../ui/dashboard/sidenav";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Panel de Control",
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
