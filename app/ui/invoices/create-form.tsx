@@ -137,7 +137,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               className={`mt-2 text-sm ${
                 state.message.includes("Failed")
                   ? "text-red-500"
-                  : "text-green-500"
+                  : "text-red-500"
               }`}
             >
               {state.message}
