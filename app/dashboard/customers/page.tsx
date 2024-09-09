@@ -1,8 +1,11 @@
+import { Suspense } from "react";
 import Search from "@/app/ui/search";
 import { CreateCustomers } from "@/app/ui/customers/buttons";
 import { lusitana } from "@/app/ui/fonts";
 import Pagination from "@/app/ui/customers/pagination";
 import { fetchCustomersPages } from "@/app/lib/data";
+import Table from "@/app/ui/customers/table";
+import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 
 export default async function Page({
   searchParams,
@@ -24,9 +27,9 @@ export default async function Page({
         <Search placeholder="Buscar Clientes..." />
         <CreateCustomers />
       </div>
-      {/*  <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
+      <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
         <Table query={query} currentPage={currentPage} />
-      </Suspense> */}
+      </Suspense>
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
