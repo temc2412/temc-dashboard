@@ -1,9 +1,23 @@
-import { Metadata } from "next";
+import Search from "@/app/ui/search";
+import { CreateCustomers } from "@/app/ui/customers/buttons";
+import { lusitana } from "@/app/ui/fonts";
 
-export const metadata: Metadata = {
-  title: "Clientes",
-};
-
-export default function Page() {
-  return <p>PAGINA DE CLIENTES EN CONSTRUCCION</p>;
+export default async function Page() {
+  return (
+    <div className="w-full">
+      <div className="flex w-full items-center justify-between">
+        <h1 className={`${lusitana.className} text-2xl`}>Clientes</h1>
+      </div>
+      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+        <Search placeholder="Buscar Clientes..." />
+        <CreateCustomers />
+      </div>
+      {/*  <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
+        <Table query={query} currentPage={currentPage} />
+      </Suspense> */}
+      <div className="mt-5 flex w-full justify-center">
+        {/* <Pagination totalPages={totalPages} /> */}
+      </div>
+    </div>
+  );
 }
