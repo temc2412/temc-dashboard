@@ -28,6 +28,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               type="text"
               id="customer"
               name="customerName"
+              placeholder="Ingrese nombre del cliente"
               className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue=""
             ></input>
