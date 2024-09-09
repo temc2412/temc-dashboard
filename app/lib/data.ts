@@ -222,3 +222,28 @@ export async function fetchCustomersPages(query: string) {
     throw new Error("Failed to fetch total number of invoices.");
   }
 }
+
+export async function fetchFilteredInvoices2(
+  query: string,
+  currentPage: number
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  try {
+    const customer = await sql<InvoicesTable>`
+      SELECT
+        customers.name,
+        customers.email,
+        customers.image_url
+      FROM customers
+      WHERE
+        customers.name ILIKE ${`%${query}%`} OR
+        customers.email ILIKE ${`%${query}%`}
+    `;
+
+    return customer.rows;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch invoices.");
+  }
+}
