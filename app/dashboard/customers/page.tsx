@@ -7,6 +7,12 @@ import { fetchCustomersPages } from "@/app/lib/data";
 import Table from "@/app/ui/customers/table";
 import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Usuarios",
+};
+
 export default async function Page({
   searchParams,
 }: {
