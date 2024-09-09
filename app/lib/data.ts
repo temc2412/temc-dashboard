@@ -214,8 +214,7 @@ export async function fetchCustomersPages(query: string) {
     JOIN customers ON invoices.customer_id = customers.id
     WHERE
       customers.name ILIKE ${`%${query}%`} OR
-      customers.email ILIKE ${`%${query}%`} OR
-  `;
+      customers.email ILIKE ${`%${query}%`}`;
 
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
