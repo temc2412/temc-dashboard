@@ -153,7 +153,7 @@ export async function createCustomer(prevState: State, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Campos faltantes. Error al crear la factura.",
+      message: "Campos faltantes. Error al crear el nuevo.",
     };
   }
 
